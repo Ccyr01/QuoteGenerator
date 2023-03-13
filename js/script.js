@@ -86,7 +86,20 @@ function printQuote(){
   qbox.innerHTML = html;
   
 }
-setTimeout(() => { document.getElementById('load-quote').printQuote }, 3000); 
+var timerId = setInterval(timerFunction, 7000);
+var countLimit = 10;
+
+function timerFunction(){
+  console.log('inside test');
+  printQuote();
+  countLimit = countLimit - 1;
+  console.log(countLimit);
+  if(countLimit == 0){
+    clearInterval(timerId);
+  }
+  
+}
+
 
 
 /***
