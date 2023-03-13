@@ -38,6 +38,7 @@ let quotes = [
   {
     quote:"We live not for the destination, but for the journey",
     source:"Eddie Pinero",
+    link: "https://www.youtube.com/watch?v=j201f8XxVxw"
     
   }
   
@@ -52,6 +53,9 @@ let quotes = [
  * `getRandomQuote` function
 ***/
 function getRandomQuote(){
+  const randomColor = Math.floor(Math.random()*16777215).toString(16);
+
+  document.body.style.backgroundColor = "#" + randomColor;
   return quotes[Math.floor(Math.random()*quotes.length)];
 }
 
@@ -74,11 +78,15 @@ function printQuote(){
   if(quote.year != null){
     html +=`<span class="year">${quote.year}</span>`;
   }
+  if(quote.link != null){
+    html += `<a href=${quote.link}> Watch Video</a>`;
+    
+  }
   html += '</p>';
   qbox.innerHTML = html;
   
 }
-
+setTimeout(() => { document.getElementById('load-quote').printQuote }, 3000); 
 
 
 /***
