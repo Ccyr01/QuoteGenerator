@@ -40,6 +40,7 @@ let quotes = [
     source:"Eddie Pinero",
     
   }
+  
 ];
 // for(let i in quotes){
 //   console.log(quotes[i].quote);
@@ -51,7 +52,7 @@ let quotes = [
  * `getRandomQuote` function
 ***/
 function getRandomQuote(){
-  return Math.floor(Math.random()*quotes.length);
+  return quotes[Math.floor(Math.random()*quotes.length)];
 }
 
 
@@ -61,12 +62,18 @@ function getRandomQuote(){
 ***/
 function printQuote(){
   let quote = getRandomQuote();
-  html = `<div id="quote-box" class="quote-box">
-  <p class="quote">${quotes[quote].quote}</p>
-  <p class="source">${quotes[quote].source}<span class="citation">${quotes[quote].citation}</span><span class="year">${quotes[quote].year}</span></p>
-</div>`;
-document.querySelector('main').innerHTML = html;
-  alert(quotes[quote].quote);
+  let qbox = document.querySelector('.quote-box');
+
+  html = `
+  <p class="quote">${quote.quote}</p>
+  <p class="source">${quote.source}`;
+  //<span class="citation">${quote.citation}</span><span class="year">${quote.year}</span></p>
+  if(quote.citation != null){
+    html += `<span class="citation">${quote.citation}</span>`;
+  }
+  html += '</p>';
+  qbox.innerHTML = html;
+  
 }
 
 
