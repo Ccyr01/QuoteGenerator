@@ -1,4 +1,6 @@
 /******************************************
+ * Christian C
+ * 3/13/2023
 Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
@@ -63,15 +65,19 @@ function getRandomQuote(){
 
 /***
  * `printQuote` function
+ * calls getRandomQuote function then it 
+ * changes what is being displayed on the 
+ * html based on the quote that was returned
 ***/
 function printQuote(){
   let quote = getRandomQuote();
   let qbox = document.querySelector('.quote-box');
-
+  //basic quote and source printed out
+  //then checks if citation, year, and link information
+  //is provided. If it is then it is also displayed
   html = `
   <p class="quote">${quote.quote}</p>
   <p class="source">${quote.source}`;
-  //<span class="citation">${quote.citation}</span><span class="year">${quote.year}</span></p>
   if(quote.citation != null){
     html += `<span class="citation">${quote.citation}</span>`;
   }
@@ -82,13 +88,16 @@ function printQuote(){
     html += `<a href=${quote.link}> Watch Video</a>`;
     
   }
+  //end of paragraph is added after the correct information is added
+  //based on what information is available for each quote
   html += '</p>';
   qbox.innerHTML = html;
   
 }
+//calls timerFunction and sets time intervals to 7 seconds
 var timerId = setInterval(timerFunction, 7000);
 var countLimit = 10;
-
+//Timer function runs ten times 
 function timerFunction(){
   console.log('inside test');
   printQuote();
