@@ -71,6 +71,9 @@ function printQuote(){
   if(quote.citation != null){
     html += `<span class="citation">${quote.citation}</span>`;
   }
+  if(quote.year != null){
+    html +=`<span class="year">${quote.year}</span>`;
+  }
   html += '</p>';
   qbox.innerHTML = html;
   
